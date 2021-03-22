@@ -37,14 +37,37 @@ const sequences = ["8888", "88888", "888888", "8888888", "88888888", "888888888"
 function isAmulet(candidate) {
     if (byteLength(candidate) <= 64) {
         for (let i = 0; i < sequences.length; i++) {
-            if (sha256(candidate).toString().includes(sequences[i])) console.log(candidate);
+            if (sha256(candidate).toString().includes(sequences[i])) return true;
         }
     }
 
     return false;
 }
 
-const lines = yeats.split(/\n/);
+// const lines = eliot.split(/\n/);
 const amulets = [];
 
-lines.forEach(amulet => { console.log(isAmulet(amulet)); });
+// lines.forEach(line => { console.log(isAmulet(line)); });
+
+document.getElementById("mine-btn").addEventListener("click", event => {
+    let text = document.getElementById("text-input").value;
+    text = text.replaceAll(/\n\s+/g, "\n");
+
+    const lines = text.split(/\n/);
+
+    console.log(lines);
+
+    const amulets = [];
+    
+    lines.forEach(candidate => { if (isAmulet(candidate)) amulets.push(candidate) });
+
+    if (amulets.length > 0) {
+        const amuletList = document.getElementById("mined-amulets");
+        
+        amulets.forEach(amulet => {
+            const amuletListElement = document.createElement("li");
+            amuletListElement.appendChild(document.createTextNode(amulet));
+            amuletList.appendChild(amuletListElement);
+        });
+    }
+});
