@@ -1,6 +1,6 @@
 // https://gist.github.com/lovasoa/11357947
 
-const amulets = ["If you can't write poems,\nwrite me",
+const foundAmulets = ["If you can't write poems,\nwrite me",
                    "DON'T WORRY.",
                    "A BLACK CROW ON THE CHEST OF A GOLDFINCH.\nIT'S WINTER IN NORWAY.",
                    "I WON'T FORGET\nI LOVE TO FISH,\nA KIND OF THERAPY.",
@@ -32,4 +32,19 @@ function byteLength(str) {
     return s;
 }
 
-amulets.forEach(amulet => { console.log(sha256(amulet)); });
+const sequences = ["8888", "88888", "888888", "8888888", "88888888", "888888888"];
+
+function isAmulet(candidate) {
+    if (byteLength(candidate) <= 64) {
+        for (let i = 0; i < sequences.length; i++) {
+            if (sha256(candidate).toString().includes(sequences[i])) console.log(candidate);
+        }
+    }
+
+    return false;
+}
+
+const lines = yeats.split(/\n/);
+const amulets = [];
+
+lines.forEach(amulet => { console.log(isAmulet(amulet)); });
