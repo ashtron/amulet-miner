@@ -6,14 +6,18 @@
     <title>Amulet Miner</title>
 
     <script src="./js/lib/sha256.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png">
 </head>
 <body>
-    <textarea id="text-input" rows=25 cols=75></textarea>
-    <button id="mine-btn">Mine Text</button>
+    <div id="container">
+        <textarea id="text-input" rows=25 cols=75></textarea>
+        <button id="mine-btn">Mine Text</button>
 
-    <div>
-        <h3>Mined Amulets</h3>
-        <ul id="mined-amulets"></ul>
+        <div>
+            <h3>Mined Amulets</h3>
+            <ul id="mined-amulets"></ul>
+        </div>
     </div>
     
     <script src="./js/yeats.js"></script>

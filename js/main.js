@@ -63,10 +63,10 @@ document.getElementById("mine-btn").addEventListener("click", event => {
 
     if (amulets.length > 0) {
         const amuletList = document.getElementById("mined-amulets");
-        
+
         amulets.forEach(amulet => {
             const amuletListElement = document.createElement("li");
-            amuletListElement.appendChild(document.createTextNode(amulet));
+            amuletListElement.appendChild(document.createTextNode(`${amulet} (${sha256(amulet)})`));
             amuletList.appendChild(amuletListElement);
         });
     }
